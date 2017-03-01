@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    
+    <ImageButton
+        android:id="@+id/contact_picture"
+        android:layout_width="@dimen/contact_picture"
+        android:layout_height="@dimen/contact_picture"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/contact_picture"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"/>
+    
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/contact_picture"
+        android:text="Collin Klenke"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:paddingTop="10dp"
+        android:textColor="@android:color/black"
+        />
+    <TextView
+        android:id="@+id/phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contact_name"
+        android:text="(281) 844-4490"
+        android:layout_toRightOf="@+id/contact_picture"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"/>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contact_name"
+        android:layout_toRightOf="@+id/phone_number"
+        android:text="cklenke@nd.edu"
+        android:paddingTop="5dp"/>
+
+</RelativeLayout>
