@@ -2,12 +2,13 @@ package com.example.collin.contactstest;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
 import java.util.BitSet;
 
 /**
  * Created by Collin on 2/26/2017.
  */
-public class Contacts {
+public class Contacts implements Serializable {
     private Bitmap contact_photo;
     private String contact_name;
     private String contact_phone;

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ListView mContacts;
+    public final static String SER_KEY = "com.example.collin.contactstest.ser";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +35,15 @@ public class MainActivity extends AppCompatActivity {
         ContactAdapter adapter = new ContactAdapter(this, listContact);
         mContacts.setAdapter(adapter);
 
+        mContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DetailPage.class);
+                Bundle bundle = new Bundle();
+                Contacts contact = (Contacts) parent.getItemAtPosition(position);
+                bundle.putSerializable(SER_KEY, contact);
+                intent.putExtras(bundle);
+            }
+        });
     }
 }
