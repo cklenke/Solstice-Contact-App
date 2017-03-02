@@ -50,7 +50,7 @@
         android:layout_below="@+id/back_button"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="@dimen/feed_item_padding_left_right"
-        android:textSize="18sp"/>
+        android:textSize="@dimen/contact_head"/>
 
     <TextView
         android:id="@+id/c_name"
@@ -61,7 +61,7 @@
         android:layout_toRightOf="@+id/contact_photo"
         android:layout_marginLeft="@dimen/feed_item_padding_left_right"
         android:layout_marginTop="5dp"
-        android:textSize="21sp"
+        android:textSize="@dimen/contact_info"
         android:textColor="@android:color/black"/>
 
     <TextView
@@ -85,7 +85,192 @@
         android:layout_marginLeft="@dimen/feed_item_padding_left_right"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/black"
-        android:textSize="21sp"/>
+        android:textSize="@dimen/contact_info"/>
 
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone:"
+        android:layout_below="@+id/contact_photo"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/contact_head"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/c_work_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2818444490"
+        android:layout_below="@+id/phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/c_home_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2818444490"
+        android:layout_below="@+id/c_work_phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/c_mobile_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2818444490"
+        android:layout_below="@+id/c_home_phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="work"
+        android:layout_below="@+id/phone"
+        android:layout_toRightOf="@+id/c_work_phone"
+        android:layout_toEndOf="@+id/c_work_phone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:paddingRight="@dimen/detail_padding_left"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/contact_head"/>
+
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="home"
+        android:layout_below="@+id/work"
+        android:layout_toRightOf="@+id/c_home_phone"
+        android:layout_toEndOf="@+id/c_home_phone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:paddingRight="@dimen/detail_padding_left"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/contact_head"/>
+
+    <TextView
+        android:id="@+id/mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mobile"
+        android:layout_below="@+id/home"
+        android:layout_toRightOf="@+id/c_mobile_phone"
+        android:layout_toEndOf="@+id/c_mobile_phone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:paddingRight="@dimen/detail_padding_left"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/contact_head"/>
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/c_mobile_phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Address:"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginStart="@dimen/detail_padding_left"
+        android:layout_marginTop="15dp"
+        android:textSize="@dimen/contact_head"/>
+
+    <TextView
+        android:id="@+id/c_street"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address"
+        android:text="9238 Elizabeth Road"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginStart="@dimen/detail_padding_left"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/c_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/c_street"
+        android:text="Houston"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginStart="@dimen/detail_padding_left"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/c_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/c_street"
+        android:layout_toRightOf="@+id/c_city"
+        android:text="TX"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/c_zip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/c_street"
+        android:layout_toRightOf="@+id/c_state"
+        android:text="77055"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/detail_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:layout_below="@+id/c_city"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginStart="@dimen/detail_padding_left"
+        android:layout_marginTop="15dp"
+        android:textSize="@dimen/contact_head"/>
+
+    <TextView
+        android:id="@+id/c_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cklenke@nd.edu"
+        android:layout_below="@+id/detail_email"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/detail_padding_left"
+        android:layout_marginStart="@dimen/detail_padding_left"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/contact_head"
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>
