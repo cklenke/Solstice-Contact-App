@@ -3,6 +3,8 @@ package com.example.collin.contactstest.utilities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,18 +36,31 @@ public class NetworkUtils {
         }
     }
 
-    public static Bitmap getBitmap(String src){
-        try{
-            URL url_bm = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url_bm.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(input);
-            return bitmap;
-        }catch (IOException e){
-            e.printStackTrace();
+    /*public static Bitmap getBitmap(String src){
+
+    }
+
+    public class FetchBitmapData extends AsyncTask<String, Void, String>{
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            if (params.length == 0) return null;
+            String src = params[0];
+            try {
+                URL url_bm = new URL(src);
+                HttpURLConnection connection = (HttpURLConnection) url_bm.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap bitmap = BitmapFactory.decodeStream(input);
+                return bitmap;
+            }catch (IOException e){
+                Log.d("bitmaptesting", src);
+                e.printStackTrace();
+                return null;
+            }
             return null;
         }
-    }
+    }*/
 }

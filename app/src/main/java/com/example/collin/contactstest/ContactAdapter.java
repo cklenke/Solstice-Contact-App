@@ -10,6 +10,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -77,7 +80,8 @@ public class ContactAdapter extends BaseAdapter{
         phone.setText(entry.getContact_phone());
 
         ImageView photo = (ImageView) convertView.findViewById(R.id.contact_picture);
-        photo.setImageBitmap(entry.getContact_photo_small());
+        //photo.setImageBitmap(entry.getContact_photo_small());
+        Picasso.with(mContext).load(entry.getContact_small_url()).into(photo);
         //v.mName.setText(entry.getContact_name());
         //v.mPhone.setText(entry.getContact_phone());
         //v.mEmail.setText(entry.getContact_email());

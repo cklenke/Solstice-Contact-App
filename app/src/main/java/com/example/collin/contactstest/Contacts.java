@@ -24,7 +24,24 @@ public class Contacts implements Serializable {
     private String contact_state;
     private String contact_country;
     private String contact_zip;
+    private String contact_small_url;
+    private String contact_large_url;
 
+    public String getContact_small_url() {
+        return contact_small_url;
+    }
+
+    public void setContact_small_url(String contact_small_url) {
+        this.contact_small_url = contact_small_url;
+    }
+
+    public String getContact_large_url() {
+        return contact_large_url;
+    }
+
+    public void setContact_large_url(String contact_large_url) {
+        this.contact_large_url = contact_large_url;
+    }
 
     public Contacts() {
 
