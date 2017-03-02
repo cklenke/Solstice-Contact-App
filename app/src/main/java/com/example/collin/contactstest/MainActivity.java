@@ -3,6 +3,7 @@ package com.example.collin.contactstest;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         setContentView(R.layout.activity_main);
 
         mContacts = (ListView)findViewById(R.id.contact_list);
@@ -92,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
                     //Log.d("TESTER", "name return: " + child.getString("name"));
                     contacts[i].setContact_company(child.getString("company"));
                     //contacts[i].setContact_favorite(child.getBoolean("favorite"));
-                    //contacts[i].setContact_photo_small();
-                    //contacts[i].setContact_photo_large();
+                    contacts[i].setContact_photo_small(NetworkUtils.getBitmap(child.getString("smallImageURL")));
+                    contacts[i].setContact_photo_large(NetworkUtils.getBitmap(child.getString("largeImageURL")));
                     contacts[i].setContact_email(child.getString("email"));
                     contacts[i].setContact_website(child.getString("website"));
 

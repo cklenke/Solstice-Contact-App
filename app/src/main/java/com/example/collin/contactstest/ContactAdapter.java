@@ -76,8 +76,8 @@ public class ContactAdapter extends BaseAdapter{
         TextView phone = (TextView) convertView.findViewById(R.id.phone_number);
         phone.setText(entry.getContact_phone());
 
-        //ImageView photo = (ImageView) convertView.findViewById(R.id.contact_picture);
-        //photo.setImageBitmap(entry.getContact_photo_small());
+        ImageView photo = (ImageView) convertView.findViewById(R.id.contact_picture);
+        photo.setImageBitmap(entry.getContact_photo_small());
         //v.mName.setText(entry.getContact_name());
         //v.mPhone.setText(entry.getContact_phone());
         //v.mEmail.setText(entry.getContact_email());
