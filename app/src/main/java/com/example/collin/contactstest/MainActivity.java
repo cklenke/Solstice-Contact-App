@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             String responseString = null;
             try {
                 responseString = NetworkUtils.getResponseFromHttpUrl();
-                Log.d("JSONRET", responseString);
+                //Log.d("JSONRET", responseString);
             } catch (Exception e){
                 Log.d("JSONRET", "shoot");
                 e.printStackTrace();
@@ -78,11 +78,14 @@ public class MainActivity extends AppCompatActivity {
 
         public Contacts[] processJSON(String responseData){
             Contacts[] contacts = new Contacts[25];
+            int p = 0;
 
             try{
                 JSONArray contactArray = new JSONArray(responseData);
 
+
                 for(int i=0; i<contactArray.length(); i++){
+                    p++;
                     contacts[i] = new Contacts();
                     JSONObject child = contactArray.getJSONObject(i);
                     contacts[i].setContact_name(child.getString("name"));
@@ -117,8 +120,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("TESTER", "shoot v 2.0");
                 e.printStackTrace();
             }
+            Contacts[] cont = new Contacts[p];
+            for(int i=0; i<p; i++){
+                cont[i] = new Contacts();
+            }
+            System.arraycopy(contacts, 0, cont, 0, p);
 
-            return contacts;
+            return cont;
         }
     }
 }

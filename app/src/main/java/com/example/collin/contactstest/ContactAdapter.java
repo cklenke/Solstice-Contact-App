@@ -21,7 +21,7 @@ public class ContactAdapter extends BaseAdapter{
     private List<Contacts> mContactList;
     ViewHolder v;
 
-    protected static class ViewHolder {
+    static class ViewHolder {
         private ImageView mImage;
         private TextView mEmail;
         private TextView mName;
@@ -52,26 +52,38 @@ public class ContactAdapter extends BaseAdapter{
         Contacts entry = mContactList.get(position);
         if(convertView == null){
             LayoutInflater inflater = LayoutInflater.from(mContext);
+            //LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item, null);
 
-            v = new ViewHolder();
+            /*v = new ViewHolder();
             v.mName = (TextView) convertView.findViewById(R.id.contact_name);
             v.mPhone = (TextView)convertView.findViewById(R.id.phone_number);
             v.mEmail = (TextView)convertView.findViewById(R.id.email);
             v.mImage = (ImageView) convertView.findViewById(R.id.contact_picture);
-
-            convertView.setTag(v);
+*/
+            //convertView.setTag(v);
         } else {
-            v = (ViewHolder) convertView.getTag();
+           // v = (ViewHolder) convertView.getTag();
+
         }
+
+        TextView name = (TextView) convertView.findViewById(R.id.contact_name);
+        name.setText(entry.getContact_name());
+
+        TextView email = (TextView) convertView.findViewById(R.id.email);
+        email.setText(entry.getContact_email());
+
+        TextView phone = (TextView) convertView.findViewById(R.id.phone_number);
+        phone.setText(entry.getContact_phone());
+
         //ImageView photo = (ImageView) convertView.findViewById(R.id.contact_picture);
         //photo.setImageBitmap(entry.getContact_photo_small());
-        v.mName.setText(entry.getContact_name());
-        v.mPhone.setText(entry.getContact_phone());
-        v.mEmail.setText(entry.getContact_email());
-
-        Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.contact_picture);
-        v.mImage.setImageBitmap(bm);
+        //v.mName.setText(entry.getContact_name());
+        //v.mPhone.setText(entry.getContact_phone());
+        //v.mEmail.setText(entry.getContact_email());
+        //v.mImage.setImageResource(R.drawable.contact_picture);
+       // Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.contact_picture);
+       // v.mImage.setImageBitmap(bm);
 
         return convertView;
     }
