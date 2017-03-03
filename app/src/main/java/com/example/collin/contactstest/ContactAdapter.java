@@ -53,21 +53,9 @@ public class ContactAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Contacts entry = mContactList.get(position);
-        if(convertView == null){
+        if(convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(mContext);
-            //LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item, null);
-
-            /*v = new ViewHolder();
-            v.mName = (TextView) convertView.findViewById(R.id.contact_name);
-            v.mPhone = (TextView)convertView.findViewById(R.id.phone_number);
-            v.mEmail = (TextView)convertView.findViewById(R.id.email);
-            v.mImage = (ImageView) convertView.findViewById(R.id.contact_picture);
-*/
-            //convertView.setTag(v);
-        } else {
-           // v = (ViewHolder) convertView.getTag();
-
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.contact_name);
@@ -80,14 +68,8 @@ public class ContactAdapter extends BaseAdapter{
         phone.setText(entry.getContact_phone());
 
         ImageView photo = (ImageView) convertView.findViewById(R.id.contact_picture);
-        //photo.setImageBitmap(entry.getContact_photo_small());
         Picasso.with(mContext).load(entry.getContact_small_url()).into(photo);
-        //v.mName.setText(entry.getContact_name());
-        //v.mPhone.setText(entry.getContact_phone());
-        //v.mEmail.setText(entry.getContact_email());
-        //v.mImage.setImageResource(R.drawable.contact_picture);
-       // Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.contact_picture);
-       // v.mImage.setImageBitmap(bm);
+
 
         return convertView;
     }

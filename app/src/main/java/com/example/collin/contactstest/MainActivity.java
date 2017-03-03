@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        //StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        //StrictMode.setThreadPolicy(policy);
 
         setContentView(R.layout.activity_main);
 
@@ -48,11 +48,14 @@ public class MainActivity extends AppCompatActivity {
         mContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("Click", "clicked row: " + position);
                 Intent intent = new Intent(MainActivity.this, DetailPage.class);
                 Bundle bundle = new Bundle();
                 Contacts contact = (Contacts) parent.getItemAtPosition(position);
+                Log.d("ClickedPerson", contact.getContact_name());
                 bundle.putSerializable(SER_KEY, contact);
                 intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
@@ -87,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
             Contacts[] contacts = new Contacts[25];
             int p = 0;
 
-            Bitmap bm;
-            Mutex mutex = new Mutex();
             try{
                 JSONArray contactArray = new JSONArray(responseData);
 
@@ -98,52 +99,12 @@ public class MainActivity extends AppCompatActivity {
                     contacts[i] = new Contacts();
                     JSONObject child = contactArray.getJSONObject(i);
                     contacts[i].setContact_name(child.getString("name"));
-                    //Log.d("TESTER", "name return: " + child.getString("name"));
+                    Log.d("TESTER", "name return: " + child.getString("name"));
                     contacts[i].setContact_company(child.getString("company"));
-                    //contacts[i].setContact_favorite(child.getBoolean("favorite"));
-                   /* try {
-                        mutex.acquire();
-                        try {
-                            bm = NetworkUtils.getBitmap(child.getString("smallImageURL"));
-                            if (bm != null) {
-                                contacts[i].setContact_photo_small(bm);
-                            } else {
-                                contacts[i].setContact_photo_small(BitmapFactory.decodeResource(getResources(), R.drawable.contact_picture));
-                            }
-                        } finally {
-                            mutex.release();
-                        }
-                    } catch (InterruptedException e){
-                        e.printStackTrace();
-                    }*/
+
                     contacts[i].setContact_small_url(child.getString("smallImageURL"));
                     contacts[i].setContact_large_url(child.getString("largeImageURL"));
 
-
-                    /*try {
-                        mutex.acquire();
-                        try {
-                            bm = NetworkUtils.getBitmap(child.getString("largeImageURL"));
-                            if (bm != null) {
-                                contacts[i].setContact_photo_large(bm);
-                            } else {
-                                contacts[i].setContact_photo_large(BitmapFactory.decodeResource(getResources(), R.drawable.contact_picture));
-                            }
-                        } finally {
-                            mutex.release();
-                        }
-                    } catch (InterruptedException e){
-                        e.printStackTrace();
-                    }*/
-
-
-
-                    //bm = NetworkUtils.getBitmap(child.getString("largeImageURL"));
-                    //if(bm != null){
-                    //    contacts[i].setContact_photo_large(bm);
-                    //} else {
-                    //    contacts[i].setContact_photo_large(BitmapFactory.decodeResource(getResources(), R.drawable.contact_picture));
-                    //}
 
                     contacts[i].setContact_email(child.getString("email"));
                     contacts[i].setContact_website(child.getString("website"));
@@ -179,10 +140,5 @@ public class MainActivity extends AppCompatActivity {
 
             return cont;
         }
-    }
-    public class Mutex{
-        public void acquire() throws InterruptedException {}
-        public void release() {}
-        public boolean attempt(long msec) throws InterruptedException { return true;}
     }
 }
