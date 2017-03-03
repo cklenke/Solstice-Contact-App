@@ -22,19 +22,12 @@ public class ContactAdapter extends BaseAdapter{
 
     private Context mContext;
     private List<Contacts> mContactList;
-    ViewHolder v;
-
-    static class ViewHolder {
-        private ImageView mImage;
-        private TextView mEmail;
-        private TextView mName;
-        private TextView mPhone;
-    }
 
     public ContactAdapter(Context context, List<Contacts> list){
         mContext = context;
         mContactList = list;
     }
+
     @Override
     public int getCount() {
         return mContactList.size();

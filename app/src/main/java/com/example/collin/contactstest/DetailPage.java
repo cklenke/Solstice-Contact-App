@@ -21,8 +21,6 @@ import com.squareup.picasso.Picasso;
 
 public class DetailPage extends Activity {
 
-    //private Button backbutton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,15 +39,13 @@ public class DetailPage extends Activity {
         final EditText state;
         final EditText zip;
         final EditText email;
-        //private String largeImageURL;
         ImageView large_photo;
-        //final EditText name_edit_text;
-        //final EditText company_edit_text;
+        final Button submit;
 
 
 
 
-        Contacts contact = (Contacts)getIntent().getSerializableExtra(MainActivity.SER_KEY);
+        final Contacts contact = (Contacts)getIntent().getSerializableExtra(MainActivity.SER_KEY);
 
         Log.d("created", contact.getContact_city());
 
@@ -64,43 +60,7 @@ public class DetailPage extends Activity {
         zip = (EditText) findViewById(R.id.c_zip);
         email = (EditText) findViewById(R.id.c_email);
         large_photo = (ImageView) findViewById(R.id.contact_photo);
-        //backbutton = (Button) findViewById(R.id.back_button);
-        //name_edit_text = (EditText) findViewById(R.id.name_edit_text);
-        //company_edit_text = (EditText) findViewById(R.id.company_edit_text);
-
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.edit_button).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                name.setInputType(InputType.TYPE_CLASS_TEXT);
-                name.setFocusableInTouchMode(true);
-                company.setInputType(InputType.TYPE_CLASS_TEXT);
-                company.setFocusableInTouchMode(true);
-                work_phone.setInputType(InputType.TYPE_CLASS_PHONE);
-                work_phone.setFocusableInTouchMode(true);
-                home_phone.setInputType(InputType.TYPE_CLASS_PHONE);
-                home_phone.setFocusableInTouchMode(true);
-                mobile_phone.setInputType(InputType.TYPE_CLASS_PHONE);
-                mobile_phone.setFocusableInTouchMode(true);
-                city.setInputType(InputType.TYPE_CLASS_TEXT);
-                city.setFocusableInTouchMode(true);
-                street.setInputType(InputType.TYPE_CLASS_TEXT);
-                street.setFocusableInTouchMode(true);
-                state.setInputType(InputType.TYPE_CLASS_TEXT);
-                state.setFocusableInTouchMode(true);
-                zip.setInputType(InputType.TYPE_CLASS_NUMBER);
-                zip.setFocusableInTouchMode(true);
-                email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-                email.setFocusableInTouchMode(true);
-            }
-        });
+        submit = (Button) findViewById(R.id.submit_button);
 
 
         name.setHint(contact.getContact_name());
@@ -120,12 +80,106 @@ public class DetailPage extends Activity {
 
         Picasso.with(mContext).load(contact.getContact_large_url()).into(large_photo);
 
+        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        findViewById(R.id.edit_button).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                name.setFocusableInTouchMode(true);
+                company.setFocusableInTouchMode(true);
+                work_phone.setFocusableInTouchMode(true);
+                home_phone.setFocusableInTouchMode(true);
+                mobile_phone.setFocusableInTouchMode(true);
+                city.setFocusableInTouchMode(true);
+                street.setFocusableInTouchMode(true);
+                state.setFocusableInTouchMode(true);
+                zip.setFocusableInTouchMode(true);
+                email.setFocusableInTouchMode(true);
+
+                submit.setVisibility(View.VISIBLE);
+            }
+        });
+
+        findViewById(R.id.submit_button).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String in_name;
+                String in_company;
+                String in_work;
+                String in_home;
+                String in_mobile;
+                String in_city;
+                String in_street;
+                String in_state;
+                String in_zip;
+                String in_email;
+
+                //GATHER ENTERED INFO - PUT INTO CONTACT
+
+                in_name = name.getText().toString();
+                if(!in_name.equals("")){
+                    Log.d("sumbitclicked", in_name);
+                    contact.setContact_name(in_name);
+                }
+                in_company = company.getText().toString();
+                if(!in_company.equals("")){
+                    contact.setContact_company(in_company);
+                }
+                in_work = work_phone.getText().toString();
+                if(!in_work.equals("")){
+                    contact.setContact_work_phone(in_work);
+                }
+                in_home = home_phone.getText().toString();
+                if(!in_home.equals("")){
+                    contact.setContact_home_phone(in_home);
+                }
+                in_mobile = mobile_phone.getText().toString();
+                if(!in_mobile.equals("")){
+                    contact.setContact_mobile_phone(in_mobile);
+                }
+                in_city = city.getText().toString();
+                if(!in_city.equals("")){
+                    contact.setContact_city(in_city);
+                }
+                in_street = street.getText().toString();
+                if(!in_street.equals("")){
+                    contact.setContact_street_address(in_street);
+                }
+                in_state = state.getText().toString();
+                if(!in_state.equals("")){
+                    contact.setContact_state(in_state);
+                }
+                in_zip = zip.getText().toString();
+                if(!in_zip.equals("")){
+                    contact.setContact_zip(in_zip);
+                }
+                in_email = email.getText().toString();
+                if(!in_email.equals("")){
+                    contact.setContact_email(in_email);
+                }
+                //UPDATE THE LIST IN MAIN ACTIVITY
+                MainActivity.updateList(contact);
 
 
-    }
+                //MAKE THEM NOT EDITABLE AGAIN
+                name.setFocusableInTouchMode(false);
+                company.setFocusableInTouchMode(false);
+                work_phone.setFocusableInTouchMode(false);
+                home_phone.setFocusableInTouchMode(false);
+                mobile_phone.setFocusableInTouchMode(false);
+                city.setFocusableInTouchMode(false);
+                street.setFocusableInTouchMode(false);
+                state.setFocusableInTouchMode(false);
+                zip.setFocusableInTouchMode(false);
+                email.setFocusableInTouchMode(false);
 
-    private void returnButton(View v){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+                submit.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 }

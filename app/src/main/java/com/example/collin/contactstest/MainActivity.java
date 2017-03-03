@@ -25,16 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ListView mContacts;
-    List<Contacts> listContact = new ArrayList<Contacts>();
+    private static List<Contacts> listContact = new ArrayList<Contacts>();
     public final static String SER_KEY = "com.example.collin.contactstest.ser";
+    ContactAdapter adapter = new ContactAdapter(this, listContact);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        //StrictMode.setThreadPolicy(policy);
-
         setContentView(R.layout.activity_main);
 
         mContacts = (ListView)findViewById(R.id.contact_list);
@@ -42,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         new FetchNetworkData().execute();
 
-        ContactAdapter adapter = new ContactAdapter(this, listContact);
+        //Log.d("onCreate", listContact.get(0).getContact_name());
+
+
         mContacts.setAdapter(adapter);
 
         mContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,6 +57,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        adapter.notifyDataSetChanged();
+        Log.d("resume", "resume called");
+        if(listContact.isEmpty()){
+            Log.d("resume", "its empty");
+        } else {
+            Log.d("resume", listContact.get(0).getContact_name());
+        }
+
+
+
+    }
+
+    public static void updateList(Contacts contact){
+        listContact.set(contact.position, contact);
     }
 
     public class FetchNetworkData extends AsyncTask<String, Void, String> {
@@ -84,11 +102,14 @@ public class MainActivity extends AppCompatActivity {
             for(Contacts contact: contacts){
                 listContact.add(contact);
             }
+            Log.d("test", listContact.get(0).getContact_name());
         }
 
         public Contacts[] processJSON(String responseData){
             Contacts[] contacts = new Contacts[25];
             int p = 0;
+
+            Log.d("tester", "why are we here");
 
             try{
                 JSONArray contactArray = new JSONArray(responseData);
@@ -125,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     contacts[i].setContact_state(address.getString("state"));
                     contacts[i].setContact_country(address.getString("country"));
                     contacts[i].setContact_zip(address.getString("zip"));
+                    contacts[i].position = i;
                 }
 
 

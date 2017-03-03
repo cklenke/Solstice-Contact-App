@@ -26,6 +26,7 @@ public class Contacts implements Serializable {
     private String contact_zip;
     private String contact_small_url;
     private String contact_large_url;
+    public int position;
 
     public String getContact_small_url() {
         return contact_small_url;
