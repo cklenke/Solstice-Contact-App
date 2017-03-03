@@ -28,8 +28,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="@dimen/feed_item_padding_left_right"
-        android:layout_marginTop="@dimen/feed_item_padding_left_right"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/edit_contact"
         android:onClick="editContact"/>
 
@@ -54,17 +55,21 @@
         android:textSize="@dimen/contact_head"
         android:textColor="@color/title_color"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Collin Klenke"
+        android:hint="Collin Klenke"
         android:layout_below="@+id/name"
         android:layout_toRightOf="@+id/contact_photo"
         android:layout_marginLeft="@dimen/feed_item_padding_left_right"
         android:layout_marginTop="5dp"
         android:textSize="@dimen/contact_info"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
     <TextView
         android:id="@+id/company"
@@ -72,23 +77,27 @@
         android:layout_height="wrap_content"
         android:text="Company:"
         android:layout_toRightOf="@+id/contact_photo"
-        android:layout_below="@+id/c_name"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="@dimen/feed_item_padding_left_right"
         android:textSize="18sp"
         android:textColor="@color/title_color"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_company"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hopefully Solstice"
+        android:hint="Hopefully Solstice"
         android:layout_toRightOf="@+id/contact_photo"
         android:layout_below="@+id/company"
         android:layout_marginLeft="@dimen/feed_item_padding_left_right"
         android:layout_marginTop="5dp"
         android:textColor="@color/text_color"
         android:textSize="@dimen/contact_info"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"
         />
 
     <TextView
@@ -102,46 +111,59 @@
         android:textSize="@dimen/contact_head"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@color/title_color"/>
+        android:textColor="@color/title_color"
+        />
 
-    <TextView
+    <EditText
         android:id="@+id/c_work_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2818444490"
+        android:hint="2818444490"
         android:layout_below="@+id/phone"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="@dimen/detail_padding_left"
         android:layout_marginTop="5dp"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_home_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2818444490"
+        android:hint="2818444490"
         android:layout_below="@+id/c_work_phone"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="@dimen/detail_padding_left"
         android:layout_marginTop="5dp"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_mobile_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2818444490"
+        android:hint="2818444490"
         android:layout_below="@+id/c_home_phone"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="@dimen/detail_padding_left"
         android:layout_marginTop="5dp"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
     <TextView
         android:id="@+id/work"
@@ -205,55 +227,71 @@
         android:textSize="@dimen/contact_head"
         android:textColor="@color/title_color"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/address"
-        android:text="9238 Elizabeth Road"
+        android:hint="9238 Elizabeth Road"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="@dimen/detail_padding_left"
         android:layout_marginStart="@dimen/detail_padding_left"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/c_street"
-        android:text="Houston"
+        android:hint="Houston"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="@dimen/detail_padding_left"
         android:layout_marginStart="@dimen/detail_padding_left"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/c_street"
         android:layout_toRightOf="@+id/c_city"
-        android:text="TX"
+        android:hint="TX"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_zip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/c_street"
         android:layout_toRightOf="@+id/c_state"
-        android:text="77055"
+        android:hint="77055"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
 
     <TextView
         android:id="@+id/detail_email"
@@ -269,11 +307,11 @@
         android:textSize="@dimen/contact_head"
         android:textColor="@color/title_color"/>
 
-    <TextView
+    <EditText
         android:id="@+id/c_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cklenke@nd.edu"
+        android:hint="cklenke@nd.edu"
         android:layout_below="@+id/detail_email"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -281,6 +319,12 @@
         android:layout_marginStart="@dimen/detail_padding_left"
         android:layout_marginTop="5dp"
         android:textSize="@dimen/contact_head"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:inputType="none"/>
+
+
 
 </RelativeLayout>
