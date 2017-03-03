@@ -19,14 +19,14 @@ import com.squareup.picasso.Picasso;
 
 public class DetailPage extends Activity {
 
-    private Button backbutton;
+    //private Button backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_page);
-        Context mContext;
+        final Context mContext;
         mContext = this;
 
         TextView name;
@@ -60,7 +60,16 @@ public class DetailPage extends Activity {
         zip = (TextView) findViewById(R.id.c_zip);
         email = (TextView) findViewById(R.id.c_email);
         large_photo = (ImageView) findViewById(R.id.contact_photo);
-        backbutton = (Button) findViewById(R.id.back_button);
+        //backbutton = (Button) findViewById(R.id.back_button);
+
+        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         name.setText(contact.getContact_name());
         company.setText(contact.getContact_company());

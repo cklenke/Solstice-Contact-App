@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">contactsTest</string>
+    <string name="all_contacts_button">&lt; All Contacts</string>
 </resources>
