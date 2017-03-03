@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
     
-    <ImageButton
+    <ImageView
         android:id="@+id/contact_picture"
         android:layout_width="@dimen/contact_picture"
         android:layout_height="@dimen/contact_picture"
@@ -30,8 +30,7 @@
         android:gravity="center"
         android:textSize="17sp"
         android:paddingTop="10dp"
-        android:textColor="@android:color/black"
-        />
+        android:textColor="@android:color/black"/>
     <TextView
         android:id="@+id/phone_number"
         android:layout_width="wrap_content"

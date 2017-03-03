@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.squareup.picasso.Picasso;
 
 public class DetailPage extends Activity {
 
+    private Button backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,9 @@ public class DetailPage extends Activity {
         city = (TextView) findViewById(R.id.c_city);
         state = (TextView) findViewById(R.id.c_state);
         zip = (TextView) findViewById(R.id.c_zip);
-        email = (TextView) findViewById(R.id.email);
+        email = (TextView) findViewById(R.id.c_email);
         large_photo = (ImageView) findViewById(R.id.contact_photo);
+        backbutton = (Button) findViewById(R.id.back_button);
 
         name.setText(contact.getContact_name());
         company.setText(contact.getContact_company());

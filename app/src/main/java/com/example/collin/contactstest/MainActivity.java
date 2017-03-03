@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     contacts[i] = new Contacts();
                     JSONObject child = contactArray.getJSONObject(i);
                     contacts[i].setContact_name(child.getString("name"));
-                    Log.d("TESTER", "name return: " + child.getString("name"));
+                    //Log.d("TESTER", "name return: " + child.getString("name"));
                     contacts[i].setContact_company(child.getString("company"));
 
                     contacts[i].setContact_small_url(child.getString("smallImageURL"));
