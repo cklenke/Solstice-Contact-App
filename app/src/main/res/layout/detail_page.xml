@@ -69,7 +69,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:singleLine="false" />
 
     <TextView
         android:id="@+id/company"
@@ -90,6 +91,8 @@
         android:hint="Hopefully Solstice"
         android:layout_toRightOf="@+id/contact_photo"
         android:layout_below="@+id/company"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/feed_item_padding_left_right"
         android:layout_marginLeft="@dimen/feed_item_padding_left_right"
         android:layout_marginTop="5dp"
         android:textColor="@color/text_color"
@@ -97,8 +100,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="text"
-        />
+        android:inputType="text|textMultiLine"
+        android:maxLines="2" />
 
     <TextView
         android:id="@+id/phone"
@@ -129,7 +132,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/c_home_phone"
@@ -146,7 +150,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/c_mobile_phone"
@@ -163,7 +168,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        android:singleLine="true" />
 
     <TextView
         android:id="@+id/work"
@@ -241,7 +247,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/c_city"
@@ -257,7 +264,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/c_state"
@@ -274,7 +282,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="textCapCharacters"/>
+        android:inputType="textCapCharacters"
+        android:maxLength="2" />
 
     <EditText
         android:id="@+id/c_zip"
@@ -291,7 +300,8 @@
         android:textColorHint="@color/text_color"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:maxLength="5" />
 
     <TextView
         android:id="@+id/detail_email"
@@ -323,7 +333,8 @@
         android:textColorHint="@color/text_color"
         android:background="@color/background_page"
         android:focusable="false"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:singleLine="true" />
 
     <Button
         android:id="@+id/submit_button"

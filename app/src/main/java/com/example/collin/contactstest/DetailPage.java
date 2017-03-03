@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
  * Created by Collin on 3/1/2017.
  */
 
+
 public class DetailPage extends Activity {
 
     @Override
@@ -33,7 +34,7 @@ public class DetailPage extends Activity {
         final EditText company;
         final EditText work_phone;
         final EditText home_phone;
-        final EditText mobile_phone;
+        final EditText mobile_phone;                                                                       //initialize variables
         final EditText street;
         final EditText city;
         final EditText state;
@@ -45,9 +46,7 @@ public class DetailPage extends Activity {
 
 
 
-        final Contacts contact = (Contacts)getIntent().getSerializableExtra(MainActivity.SER_KEY);
-
-        Log.d("created", contact.getContact_city());
+        final Contacts contact = (Contacts)getIntent().getSerializableExtra(MainActivity.SER_KEY);          //retrieve the contact object from serialization
 
         name = (EditText) findViewById(R.id.c_name);
         company = (EditText) findViewById(R.id.c_company);
@@ -56,7 +55,7 @@ public class DetailPage extends Activity {
         mobile_phone = (EditText) findViewById(R.id.c_mobile_phone);
         street = (EditText) findViewById(R.id.c_street);
         city = (EditText) findViewById(R.id.c_city);
-        state = (EditText) findViewById(R.id.c_state);
+        state = (EditText) findViewById(R.id.c_state);                                                      //connect variables to xml
         zip = (EditText) findViewById(R.id.c_zip);
         email = (EditText) findViewById(R.id.c_email);
         large_photo = (ImageView) findViewById(R.id.contact_photo);
@@ -67,7 +66,7 @@ public class DetailPage extends Activity {
         company.setHint(contact.getContact_company());
         work_phone.setHint(contact.getContact_phone());
         home_phone.setHint(contact.getContact_home_phone());
-        mobile_phone.setHint(contact.getContact_mobile_phone());
+        mobile_phone.setHint(contact.getContact_mobile_phone());                                            //set as hint so that editing them is easier
         street.setHint(contact.getContact_street_address());
         String citystring = contact.getContact_city();
         citystring = citystring + ", ";
@@ -80,15 +79,15 @@ public class DetailPage extends Activity {
 
         Picasso.with(mContext).load(contact.getContact_large_url()).into(large_photo);
 
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {                  //return to main activity
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        findViewById(R.id.edit_button).setOnClickListener(new View.OnClickListener(){
-            @Override
+        findViewById(R.id.edit_button).setOnClickListener(new View.OnClickListener(){                   //edit the contact information - allows the elements to be focusable so user can edit them
+            @Override                                                                                   // additionally, submit button appears to tell user they are in editing mode
             public void onClick(View v){
                 name.setFocusableInTouchMode(true);
                 company.setFocusableInTouchMode(true);
@@ -119,7 +118,7 @@ public class DetailPage extends Activity {
                 String in_zip;
                 String in_email;
 
-                //GATHER ENTERED INFO - PUT INTO CONTACT
+                                                                                        // gather entered information to put into the contact
 
                 in_name = name.getText().toString();
                 if(!in_name.equals("")){
@@ -162,11 +161,11 @@ public class DetailPage extends Activity {
                 if(!in_email.equals("")){
                     contact.setContact_email(in_email);
                 }
-                //UPDATE THE LIST IN MAIN ACTIVITY
+                                                                                        //update the list in the main activity
                 MainActivity.updateList(contact);
 
 
-                //MAKE THEM NOT EDITABLE AGAIN
+                                                                                        // Make it so that the user cannot edit them again, unless they click the edit button again
                 name.setFocusableInTouchMode(false);
                 company.setFocusableInTouchMode(false);
                 work_phone.setFocusableInTouchMode(false);
@@ -178,7 +177,7 @@ public class DetailPage extends Activity {
                 zip.setFocusableInTouchMode(false);
                 email.setFocusableInTouchMode(false);
 
-                submit.setVisibility(View.INVISIBLE);
+                submit.setVisibility(View.INVISIBLE);                                   // submit button disappears so that user knows they are no longer in edit mode
             }
         });
     }

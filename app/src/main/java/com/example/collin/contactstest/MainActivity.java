@@ -1,10 +1,7 @@
 package com.example.collin.contactstest;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +14,6 @@ import com.example.collin.contactstest.utilities.NetworkUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,25 +32,21 @@ public class MainActivity extends AppCompatActivity {
 
         mContacts = (ListView)findViewById(R.id.contact_list);
 
+        new FetchNetworkData().execute();                                       //call network to gather JSON info
 
-        new FetchNetworkData().execute();
-
-        //Log.d("onCreate", listContact.get(0).getContact_name());
-
-
-        mContacts.setAdapter(adapter);
+        mContacts.setAdapter(adapter);                                          //set up the adapter with the list of contacts created by parsing JSON
 
         mContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {      //allow each element in ListView to be clickable - unique to each element
                 Log.d("Click", "clicked row: " + position);
                 Intent intent = new Intent(MainActivity.this, DetailPage.class);
                 Bundle bundle = new Bundle();
-                Contacts contact = (Contacts) parent.getItemAtPosition(position);
-                Log.d("ClickedPerson", contact.getContact_name());
-                bundle.putSerializable(SER_KEY, contact);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                Contacts contact = (Contacts) parent.getItemAtPosition(position);   //get the contact object in the row clicked by the user
+                Log.d("ClickedPerson", contact.getContact_name());                  //check the return on getItemAtPosition
+                bundle.putSerializable(SER_KEY, contact);                           //serialize the contacts object to send to the detail page activity
+                intent.putExtras(bundle);                                           //add the bundle with the contact object to the intent
+                startActivity(intent);                                              //launch details page
             }
         });
     }
@@ -62,23 +54,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        adapter.notifyDataSetChanged();
-        Log.d("resume", "resume called");
-        if(listContact.isEmpty()){
-            Log.d("resume", "its empty");
-        } else {
-            Log.d("resume", listContact.get(0).getContact_name());
-        }
-
-
-
+        adapter.notifyDataSetChanged();                                             //update the contacts listview by telling the adapter to refresh
     }
 
-    public static void updateList(Contacts contact){
+    public static void updateList(Contacts contact){                                //this function allows the list of contacts to be updated in the detial activity
         listContact.set(contact.position, contact);
     }
 
-    public class FetchNetworkData extends AsyncTask<String, Void, String> {
+    public class FetchNetworkData extends AsyncTask<String, Void, String> {         //this class is used to gather JSON info in background
 
         @Override
         protected String doInBackground(String... params) {
@@ -100,16 +83,13 @@ public class MainActivity extends AppCompatActivity {
             Contacts[] contacts = processJSON(responseData);
 
             for(Contacts contact: contacts){
-                listContact.add(contact);
+                listContact.add(contact);                                       //iterate through the contacts list returned and add it to the contacts list used by the listview adapter
             }
-            Log.d("test", listContact.get(0).getContact_name());
         }
 
         public Contacts[] processJSON(String responseData){
-            Contacts[] contacts = new Contacts[25];
+            Contacts[] contacts = new Contacts[25];                             //initialized an array of Contacts. 25 here but it should be larger if you expect the JSON to have a lot of information
             int p = 0;
-
-            Log.d("tester", "why are we here");
 
             try{
                 JSONArray contactArray = new JSONArray(responseData);
@@ -120,12 +100,10 @@ public class MainActivity extends AppCompatActivity {
                     contacts[i] = new Contacts();
                     JSONObject child = contactArray.getJSONObject(i);
                     contacts[i].setContact_name(child.getString("name"));
-                    //Log.d("TESTER", "name return: " + child.getString("name"));
                     contacts[i].setContact_company(child.getString("company"));
 
                     contacts[i].setContact_small_url(child.getString("smallImageURL"));
                     contacts[i].setContact_large_url(child.getString("largeImageURL"));
-
 
                     contacts[i].setContact_email(child.getString("email"));
                     contacts[i].setContact_website(child.getString("website"));
@@ -154,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("TESTER", "shoot v 2.0");
                 e.printStackTrace();
             }
-            Contacts[] cont = new Contacts[p];
-            for(int i=0; i<p; i++){
-                cont[i] = new Contacts();
+            Contacts[] cont = new Contacts[p];                                  //List view works much better if you have the exact number of contacts as the size of your contacts array
+            for(int i=0; i<p; i++){                                             // to solve this, create a new array of the right size once you know what it is and copy the contents of the
+                cont[i] = new Contacts();                                       //  original unfilled array to an array of the perfect size (p)
             }
-            System.arraycopy(contacts, 0, cont, 0, p);
+            System.arraycopy(contacts, 0, cont, 0, p);                          //copied here
 
             return cont;
         }
